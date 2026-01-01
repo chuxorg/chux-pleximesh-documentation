@@ -1,0 +1,88 @@
+/* Fluent-inspired theming: calm neutrals, clear hierarchy, generous spacing */
+
+:root {
+  --md-primary-fg-color: #3949ab;
+  --md-primary-bg-color: #ffffff;
+  --md-accent-fg-color: #2962ff;
+  --md-default-bg-color: #f8f9fb;
+  --md-default-fg-color: #0f172a;
+  --md-default-fg-color--light: #334155;
+  --md-default-fg-color--lighter: #475569;
+  --md-default-fg-color--lightest: #64748b;
+  --pm-surface: #ffffff;
+  --pm-surface-alt: #f1f5f9;
+  --pm-border: #e2e8f0;
+  --pm-radius: 12px;
+  --pm-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* Typography */
+body,
+.md-typeset {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.7;
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h1 { margin-bottom: 0.4em; }
+.md-typeset h2 { margin-top: 1.4em; margin-bottom: 0.6em; }
+.md-typeset h3 { margin-top: 1.1em; margin-bottom: 0.4em; }
+
+/* Cards for lists and summaries */
+.pm-card {
+  background: var(--pm-surface);
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius);
+  padding: 1.2rem 1.4rem;
+  box-shadow: var(--pm-shadow);
+  margin: 1rem 0;
+}
+
+.pm-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.3rem;
+}
+
+/* Admonitions: softer background with accent bar */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: var(--pm-radius);
+  border: 1px solid var(--pm-border);
+  box-shadow: none;
+  background: var(--pm-surface-alt);
+}
+
+/* Code blocks */
+.md-typeset pre code {
+  border-radius: 10px;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+/* Lists and spacing */
+.md-typeset ul {
+  margin-top: 0.2rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Anchors and links */
+.md-nav__link,
+.md-typeset a {
+  color: #1d4ed8;
+}
+
+.md-nav__link--active {
+  font-weight: 600;
+}
+
+/* Content width */
+.md-grid {
+  max-width: 1100px;
+}

@@ -1,0 +1,69 @@
+site_name: PlexiMesh Documentation
+site_description: Canonical documentation for PlexiOS (code name PlexiMesh) — runtime, governance, observability, and canon navigation.
+site_url: https://chuxorg.github.io/chux-pleximesh-documentation/
+repo_url: https://github.com/chuxorg/chux-pleximesh-documentation
+repo_name: chux-pleximesh-documentation
+edit_uri: ""
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.top
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+    - content.action.edit
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: blue
+  font:
+    text: "Inter"
+    code: "JetBrains Mono"
+  icon:
+    repo: fontawesome/brands/github
+  logo: null
+  favicon: null
+
+extra_css:
+  - styles/extra.css
+
+markdown_extensions:
+  - admonition
+  - def_list
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.snippets
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - Home: index.md
+  - Runtime:
+      - Runtime Overview: runtime.md
+      - Sprint 1 Execution Model: sprint-1-execution-model.md
+  - Operators:
+      - PlexiMesh & AWACS Guide: user-pleximesh-awacs.md
+      - AWACS Maestro ↔ Human Contract: awacs-maestro-human-contract.md
+  - Canon & Librarian:
+      - Canon Navigator: librarian-canon.md
+
+docs_dir: docs
+site_dir: site
+
+plugins:
+  - search
