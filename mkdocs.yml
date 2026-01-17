@@ -52,6 +52,7 @@ markdown_extensions:
       custom_checkbox: true
 
 nav:
+  - Contents: contents.md
   - Home: index.md
   - Runtime:
       - Runtime Overview: runtime.md

@@ -1,6 +1,7 @@
 # PlexiMesh Documentation
 
 Welcome to the PlexiMesh documentation hub. These pages describe the runtime architecture, governance model, and Sprint 1 execution references.
+For a complete navigation index, see [Contents](contents.md).
 
 ## Contents
 - [PlexiMesh Runtime Documentation](runtime.md) — platform-grade overview of the runtime, core concepts, execution model, messaging, runners, governance, and philosophy.

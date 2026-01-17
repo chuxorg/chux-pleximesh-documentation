@@ -63,9 +63,9 @@ Role immutability is enforced structurally: an agent receives one role identifie
 ## Execution Model
 
 ### Authorization, Assignment, Execution
-1. **Authorization:** Guardian validates Canon readiness and emits lifecycle events (e.g., `execution.armed`).
+1. **Authorization:** Guardian validates Canon readiness and emits lifecycle events (e.g., `Lifecycle.ExecutionArmed`).
 2. **Assignment:** Guardian issues a bounded task referencing Canon artifacts; Agent Factory loads the Engineering Agent with those constraints.
-3. **Execution:** The Engineering Agent performs edits, emits telemetry, and proposes code changes back to Guardian for review.
+3. **Execution:** The Engineering Agent performs edits, emits telemetry, and proposes code changes via `Verification.TaskReadyForReview` for Guardian review.
 
 ### Execution Handshake
 ```mermaid
@@ -78,7 +78,7 @@ sequenceDiagram
     PM-->>Guardian: Task artifact confirmation (Canon)
     Guardian->>AgentFactory: Assign bounded task + constraints
     AgentFactory->>Engineer: Activate agent (non-inert) with InitKit snapshot
-    Engineer-->>Guardian: code.change.proposed event
+    AgentFactory-->>Guardian: Verification.TaskReadyForReview event
     Guardian->>Engineer: Approval or rejection gate
 ```
 
@@ -102,13 +102,13 @@ The runtime communicates entirely through signed event envelopes. Even when dire
 - **Repository:** Commit published after Guardian approval.
 
 ### Ordering Guarantees
-Events enter an append-only log with sequence identifiers. The runtime enforces causal ordering for blocking interactions: an approval cannot be recorded before the corresponding proposal event exists. Non-blocking telemetry may interleave but retains timestamps and sequence numbers.
+Events enter an append-only log with sequence identifiers. The runtime enforces causal ordering for blocking interactions: an approval cannot be recorded before the corresponding `Verification.TaskReadyForReview` event exists. Non-blocking telemetry may interleave but retains timestamps and sequence numbers.
 
 ### Correlation & Traceability
 Each envelope includes `correlation_id`, optional `span_id`, runtime version, InitKit hash, and agent identifiers. This metadata allows AWACS and auditors to rebuild exact timelines across Guardian decisions, agent actions, and repository commits.
 
 ### Events Are Facts, Not Commands
-Commands flow through Guardian-to-Agent dialogues. Events merely state what occurred (“code.change.proposed”). Downstream components must not treat events as instructions; they are immutable truths used for audits, observability, and replay.
+Commands flow through Guardian-to-Agent dialogues. Events merely state what occurred (“Verification.TaskReadyForReview”). Downstream components must not treat events as instructions; they are immutable truths used for audits, observability, and replay.
 
 ---
 

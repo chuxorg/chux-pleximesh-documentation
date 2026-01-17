@@ -19,8 +19,8 @@ PlexiMesh Runtime provides the governed execution substrate for Guardian-, PM-, 
 - Events are facts, not commands; state transitions occur only when Guardian issues them, and the event sink records the evidence.
 
 ### Execution Flow (Guardian → PM → Engineering → Guardian)
-- Sprint 1 execution model records the authoritative handshake: Guardian arms execution, PM artifacts are referenced, Agent Factory instantiates an inert Engineering Agent, Guardian issues a bounded task, the agent proposes code, and Guardian approves or rejects before any commit.  
-- Each boundary emits required events (`task.started`, `artifact.created`, `code.change.proposed`, etc.) so AWACS and auditors can trace progress end-to-end.
+- Sprint 1 execution model records the authoritative handshake: Guardian arms execution, PM artifacts are referenced, Agent Factory instantiates an inert Engineering Agent, Guardian issues a bounded task, the agent completes work, and Guardian approves or rejects before any commit.  
+- Each boundary emits required events (`Lifecycle.ExecutionArmed`, `Tasking.AgentTaskIssued`, `Verification.TaskReadyForReview`, etc.) so AWACS and auditors can trace progress end-to-end.
 
 ### Agent Factory & Runner
 - Agent Factory materializes agents with capability manifests, InitKit context, and harness wiring but leaves them inert until Guardian assigns a task.  
@@ -42,17 +42,17 @@ PlexiMesh Runtime provides the governed execution substrate for Guardian-, PM-, 
    - Guardian verifies Canon status (Canonical vs Deferred) before any agent work.
 
 2. **Arm Execution**  
-   - Guardian emits lifecycle `ExecutionArmed` and records the correlation ID that AWACS and all agents will reuse.
+   - Guardian emits lifecycle `Lifecycle.ExecutionArmed` and records the correlation ID that AWACS and all agents will reuse.
 
 3. **Assign Task via Guardian → Agent Factory**  
    - Guardian issues the bounded task referencing Canon IDs; Agent Factory instantiates or activates the Engineering Agent with the InitKit snapshot.
 
 4. **Agent Executes Under Harness**  
-   - Agent edits only sanctioned files (e.g., ensuring `/runtime/runtime.go` matches Canon content) and emits telemetry events as progress markers.
+   - Agent edits only sanctioned files (e.g., ensuring `/runtime/runtime.go` matches Canon content) and emits telemetry events such as `Tasking.TaskInProgress` or `Tasking.TaskBlocked`.
 
 5. **Guardian Review & Commit**  
-   - Agent Factory packages `code.change.proposed`; Guardian approves or rejects.  
-   - If approved, commit metadata embeds the correlation ID and `commit.created` event fires.
+   - Agent Factory packages the diff and emits `Verification.TaskReadyForReview`; Guardian approves or rejects via `Lifecycle.ExecutionApproved` or `Lifecycle.ExecutionRejected`.  
+   - If approved, commit metadata embeds the correlation ID and `Repository.CommitPublished` event fires.
 
 6. **Observe via AWACS**  
    - Operators consult AWACS timelines or append-only logs to confirm all required events fired and Canon references match.
@@ -61,7 +61,7 @@ PlexiMesh Runtime provides the governed execution substrate for Guardian-, PM-, 
 - **Runtime Skeleton Validation (ENG-S1-TASK-001):**  
   - Canon task mandates creating `/runtime/runtime.go` with a specific struct and constructor.  
   - Engineering Agent follows Steps 1–5, ensures Guardian approval, and emits the full event sequence.  
-  - AWACS (or logs) displays `task.started` through `task.completed` with matching correlation IDs.
+  - AWACS (or logs) displays `Lifecycle.ExecutionArmed` through `Lifecycle.SprintSliceCompleted` with matching correlation IDs.
 
 - **Documentation Publication:**  
   - Documentation Agent syncs Canon artifacts into `docs/` for human readability, tagging each file with a notice that Canon remains authoritative.  
@@ -69,7 +69,7 @@ PlexiMesh Runtime provides the governed execution substrate for Guardian-, PM-, 
 
 ## Common Pitfalls
 - **Skipping Canon Verification:** Attempting execution without confirming Canon status leads to Guardian denial; always check Librarian artifacts first.
-- **Treating Events as Commands:** Downstream systems must not act on `code.change.proposed` as if it grants approval—only Guardian decisions authorize commits.
+- **Treating Events as Commands:** Downstream systems must not act on `Verification.TaskReadyForReview` as if it grants approval—only Guardian decisions authorize commits.
 - **Role Drift:** Agents are instantiated with immutable roles; trying to repurpose an Engineering Agent as Guardian violates Guardian Law and halts execution.
 - **Observability Overreach:** AWACS must remain read-only. Wiring AWACS outputs back into runtime control paths breaks safety assumptions and is forbidden.
 - **Missing Correlation IDs:** Forgetting to propagate the sprint correlation ID into commits or events disconnects AWACS timelines and triggers audits.
