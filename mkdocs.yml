@@ -13,7 +13,7 @@ theme:
     - navigation.tracking
     - navigation.sections
     - navigation.expand
-    - toc.integrate
+    - toc.follow
     - content.action.edit
     - content.code.copy
     - content.code.annotate
@@ -28,6 +28,11 @@ theme:
     repo: fontawesome/brands/github
   logo: null
   favicon: null
+
+extra:
+  version:
+    provider: mike
+    default: current
 
 extra_css:
   - styles/extra.css

@@ -4,7 +4,7 @@
 **Applies to:** current (pre-versioned)
 
 Choose a language:
-- **English (en):** [Start here](en/index.md)
-- **繁體中文 (zh-Hant):** [從這裡開始](zh-Hant/index.md)
+- **English (en):** [Start here](en/)
+- **繁體中文 (zh-Hant):** [從這裡開始](zh-Hant/)
 
-For a central navigation index, see [Contents](contents.md).
+For a central navigation index, see [Contents](contents/).
