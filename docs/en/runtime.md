@@ -1,5 +1,9 @@
 # PlexiMesh Runtime Documentation
 
+**Language:** English (en)
+**Applies to:** current (pre-versioned)
+
+
 Senior engineers and platform architects can use this guide to understand the PlexiMesh Runtime as an operational system. The document is structured for GitHub Pages and includes intra-page navigation.
 
 ## Navigation

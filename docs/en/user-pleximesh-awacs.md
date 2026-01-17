@@ -1,5 +1,9 @@
 # PlexiMesh & AWACS — User/Operator Guide
 
+**Language:** English (en)
+**Applies to:** current (pre-versioned)
+
+
 ## Problem
 Distributed AI execution without hard governance drifts quickly: roles blur, agents self-assign work, and observability becomes retrospective guesswork. Traditional workflow engines automate queues but lack constitutional controls, canonical documentation, or verifiable traces. Operators need a mesh that prevents scope drift, keeps humans at intent boundaries, and still lets agents produce real code under supervision while giving observers a read-only window into every lifecycle transition.
 

@@ -1,3 +1,6 @@
+**Language:** English (en)
+**Applies to:** current (pre-versioned)
+
 > This document is published for readability. The authoritative version is stored in the Canon (`Sprint-1-Execution-Model.md`).
 
 # Sprint 1 Execution Model: Guardian-Governed Agent Code Production

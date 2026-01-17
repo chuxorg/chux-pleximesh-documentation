@@ -54,21 +54,41 @@ markdown_extensions:
 nav:
   - Contents: contents.md
   - Home: index.md
-  - Runtime:
-      - Runtime Overview: runtime.md
-      - Run Lifecycle: runtime/run-lifecycle.md
-      - Event Envelope: runtime/event-envelope.md
-      - Abort Semantics: runtime/abort-semantics.md
-      - MVP Required Events: runtime/mvp-required-events.md
-      - Sprint 1 Execution Model: sprint-1-execution-model.md
-  - Governance:
-      - Guardian Gates: governance/guardian-gates.md
-      - Dev Workflow Minimums: governance/dev-workflow-minimums.md
-  - Operators:
-      - PlexiMesh & AWACS Guide: user-pleximesh-awacs.md
-      - AWACS Maestro ↔ Human Contract: awacs-maestro-human-contract.md
-  - Canon & Librarian:
-      - Canon Navigator: librarian-canon.md
+  - English:
+      - Start: en/index.md
+      - Contents: en/contents.md
+      - Runtime:
+          - Runtime Overview: en/runtime.md
+          - Run Lifecycle: en/runtime/run-lifecycle.md
+          - Event Envelope: en/runtime/event-envelope.md
+          - Abort Semantics: en/runtime/abort-semantics.md
+          - MVP Required Events: en/runtime/mvp-required-events.md
+          - Sprint 1 Execution Model: en/sprint-1-execution-model.md
+      - Governance:
+          - Guardian Gates: en/governance/guardian-gates.md
+          - Dev Workflow Minimums: en/governance/dev-workflow-minimums.md
+      - Operators:
+          - PlexiMesh & AWACS Guide: en/user-pleximesh-awacs.md
+          - AWACS Maestro ↔ Human Contract: en/awacs-maestro-human-contract.md
+      - Canon & Librarian:
+          - Canon Navigator: en/librarian-canon.md
+      - Versions: en/versions/README.md
+  - 繁體中文:
+      - 開始: zh-Hant/index.md
+      - 內容: zh-Hant/contents.md
+      - Runtime:
+          - 執行概覽: zh-Hant/runtime.md
+          - 事件封裝: zh-Hant/runtime/event-envelope.md
+          - MVP 必要事件: zh-Hant/runtime/mvp-required-events.md
+          - Sprint 1 執行模型: zh-Hant/sprint-1-execution-model.md
+      - Operators:
+          - PlexiMesh 與 AWACS 指南: zh-Hant/user-pleximesh-awacs.md
+      - Governance (EN):
+          - Guardian Gates (EN): en/governance/guardian-gates.md
+          - Dev Workflow Minimums (EN): en/governance/dev-workflow-minimums.md
+      - Canon & Librarian (EN):
+          - Canon Navigator (EN): en/librarian-canon.md
+      - Versions: zh-Hant/versions/README.md
 
 docs_dir: docs
 site_dir: site

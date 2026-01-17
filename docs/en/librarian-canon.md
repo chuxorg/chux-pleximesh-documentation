@@ -1,5 +1,9 @@
 # PlexiOS Canon & Librarian Navigator (User/Operator)
 
+**Language:** English (en)
+**Applies to:** current (pre-versioned)
+
+
 This page explains what the Canon is, why PlexiOS (code name PlexiMesh) uses it, and how to navigate Librarian-held artifacts. Links point to the Librarian repository so readers can jump directly to source files.
 
 ## What the Canon Is (and Is Not)

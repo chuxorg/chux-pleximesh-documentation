@@ -1,5 +1,9 @@
 # AWACS Maestro ↔ Human Interaction Contract
 
+**Language:** English (en)
+**Applies to:** current (pre-versioned)
+
+
 This contract defines how Maestro communicates with humans within AWACS. It constrains when Maestro speaks, what is emitted, how humans respond, and how ambiguity is handled.
 
 ## When Maestro Speaks

@@ -1,5 +1,9 @@
 # Guardian Gates (Decision Model)
 
+**Language:** English (en)
+**Applies to:** current (pre-versioned)
+
+
 !!! info "MVP contract"
     This page documents the MVP-locked contract. It does not add or change semantics.
 
