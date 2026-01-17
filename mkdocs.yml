@@ -55,7 +55,14 @@ nav:
   - Home: index.md
   - Runtime:
       - Runtime Overview: runtime.md
+      - Run Lifecycle: runtime/run-lifecycle.md
+      - Event Envelope: runtime/event-envelope.md
+      - Abort Semantics: runtime/abort-semantics.md
+      - MVP Required Events: runtime/mvp-required-events.md
       - Sprint 1 Execution Model: sprint-1-execution-model.md
+  - Governance:
+      - Guardian Gates: governance/guardian-gates.md
+      - Dev Workflow Minimums: governance/dev-workflow-minimums.md
   - Operators:
       - PlexiMesh & AWACS Guide: user-pleximesh-awacs.md
       - AWACS Maestro ↔ Human Contract: awacs-maestro-human-contract.md
